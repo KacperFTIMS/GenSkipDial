@@ -20,30 +20,27 @@ def random_delay():
         return random.uniform(1.27,2.13)
     return random.uniform(0.57,1.29)
 
-def press_space():
-    pyautogui.keyDown('space')
-    time.sleep(random.uniform(0.0532, 0.226))
-    pyautogui.keyUp('space')
-
-def press_f():
-    pyautogui.keyDown('f')
+def press_key(x):
+    pyautogui.keyDown(x)
     time.sleep(random.uniform(0.0523, 0.217))
-    pyautogui.keyUp('f')
+    pyautogui.keyUp(x)
 
 def press_keys():
     if random.random() < 0.2: #First F then SPACE
+        pyautogui.scroll(10)
         if random.random() < 0.93:
-            press_f()
+            press_key('f')
         time.sleep(random.uniform(0.0484, 0.283))
         if random.random() < 0.94:
-            press_space()
+            press_key('space')
     else:
         #First SPACE then F
         if random.random() < 0.92:
-            press_space()
+            press_key('space')
         time.sleep(random.uniform(0.0516, 0.2183))
+        pyautogui.scroll(10)
         if random.random() < 0.91:
-            press_f()
+            press_key('f')
 
 keyboard.add_hotkey("q", stop_script, suppress=True)
 keyboard.add_hotkey("r", running_script, suppress=True)
